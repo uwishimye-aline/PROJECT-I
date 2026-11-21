@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop Control System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==== App Header ==== -->
+  <header id="app-header" class="header">
+    <div class="header-left">
+      <button id="menu-btn" class="icon-btn" title="Toggle Menu" aria-label="Toggle Menu">☰</button>
+      <h1 id="page-title" class="brand-title">Shop Control</h1>
+      <div id="header-meta" class="header-meta" style="display: none;">
+        <span id="header-branch" class="badge-branch">Main Branch</span>
+        <span id="header-role" class="badge-role admin">Admin</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <span id="online-indicator" class="dot green" title="Online Status"></span>
+      <button id="profile-btn" class="icon-btn" title="Profile Menu" aria-label="Profile Menu">👤</button>
+    </div>
+  </header>
+
+  <!-- ==== Drawer Backdrop & Sidebar Navigation ==== -->
+  <div id="drawer-backdrop" class="drawer-backdrop"></div>
+  <nav id="drawer" class="drawer">
+    <div class="drawer-header">
+      <div>
+        <h3 id="drawer-company">Shop Control</h3>
+        <small id="drawer-branch-info" style="color: var(--text-muted); font-size: 0.8rem;"></small>
+      </div>
+      <button id="close-drawer-btn" class="icon-btn" style="color: var(--text-muted); font-size: 1.1rem;">✕</button>
+    </div>
+    <ul id="menu-list" class="menu-list">
+      <!-- Injected dynamically based on role -->
+    </ul>
+    <div class="drawer-footer" id="drawer-footer">
+      <!-- Quick switch / Logout -->
+    </div>
+  </nav>
+
+  <!-- ==== Main Content Area ==== -->
+  <main id="main-content" class="main-wrapper">
+    <!-- Rendered dynamically -->
+  </main>
+
+  <!-- ==== Profile Modal (Language, Theme, Branch Switcher, Switch Role, Settings) ==== -->
+  <dialog id="profile-modal" class="modal">
+    <div class="modal-header">
+      <h3 id="profile-modal-title">Profile & Preferences</h3>
+      <button id="close-profile-btn" class="icon-btn" style="color: var(--text-muted); font-size: 1rem;">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom: 1rem; padding: 0.75rem; background: var(--bg-subtle); border-radius: var(--radius-md);">
+        <div style="font-weight: 700; font-size: 1rem;" id="profile-branch-name">Main Branch</div>
+        <div style="color: var(--text-muted); font-size: 0.85rem;" id="profile-role-display">Role: Admin</div>
+      </div>
+
+      <!-- Branch Switcher (Admin only, when branches > 1) -->
+      <div class="form-group" id="branch-switcher-group" style="display: none;">
+        <label for="branch-select" id="lbl-switch-branch">Switch Branch</label>
+        <select id="branch-select"></select>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="form-group">
+        <label for="lang-select" id="lbl-language">Language</label>
+        <select id="lang-select">
+          <option value="en">English</option>
+          <option value="rw">Kinyarwanda</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+
+      <!-- Theme Selector -->
+      <div class="form-group">
+        <label for="theme-select" id="lbl-theme">Theme</label>
+        <select id="theme-select">
+          <option value="system">System Default</option>
+          <option value="light">Light Mode</option>
+          <option value="dark">Dark Mode</option>
+        </select>
+      </div>
+
+      <div id="profile-admin-actions" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+        <!-- Injected for admin: Settings, Log in as Employee -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="logout-btn" class="btn btn-danger btn-sm" style="margin-right: auto;">Log out</button>
+      <button id="save-profile-btn" class="btn btn-primary btn-sm">Done</button>
+    </div>
+  </dialog>
+
+  <!-- ==== Dynamic Action Modal (For Add Product, Record Payment, Extension Request, etc.) ==== -->
+  <dialog id="action-modal" class="modal">
+    <div class="modal-header">
+      <h3 id="action-modal-title">Action</h3>
+      <button id="close-action-modal-btn" class="icon-btn" style="color: var(--text-muted); font-size: 1rem;">✕</button>
+    </div>
+    <div class="modal-body" id="action-modal-body">
+      <!-- Dynamic Form -->
+    </div>
+    <div class="modal-footer" id="action-modal-footer">
+      <!-- Buttons -->
+    </div>
+  </dialog>
+
+  <!-- ==== Toast Notifications Container ==== -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ==== Application Logic ==== -->
+  <script src="app.js"></script>
+</body>
+</html>
